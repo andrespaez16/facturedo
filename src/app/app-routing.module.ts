@@ -6,8 +6,8 @@ import { ShowComponent } from './show/show.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'list', component: LoginComponent },
-  { path: 'show:operation', component: LoginComponent },
+  { path: 'list', component: ListComponent },
+  { path: 'show:operation', component: ShowComponent },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
 ];
 

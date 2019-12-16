@@ -13,7 +13,7 @@ export class ServicesService {
     list: 'https://fact2-dev.herokuapp.com/v1/factoring/auctions',
     show: 'https://fact2-dev.herokuapp.com/v1/factoring/operations/{{ operation }}'
   }
-
+  private headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http: HttpClient, private router: Router, ) { }
 
   /**
@@ -25,10 +25,8 @@ export class ServicesService {
       "Content-Type",
       "application/json"
     );
-    return this.http.post(this.endpoint.auth, JSON.stringify(data), {
-      observe: "body",
-      headers: headers
-    })
+    return this.http.post(this.endpoint.auth, JSON.stringify(data), 
+    { headers: this.headers, responseType: "json", observe: "response" })
   }
 
 
