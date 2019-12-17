@@ -17,7 +17,7 @@ export class ShowComponent implements OnInit {
 
   ngOnInit() { }
 
-
+  /*funcion fake de compra y declinar*/
   back(){
     this.router.navigate(['/list']);
   }
@@ -27,7 +27,7 @@ export class ShowComponent implements OnInit {
     this.router.navigate(['/list']);
   }
 
-
+  /*Snackbar */
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Gracias ,Servicio al cliente te llamara para cerrar la compra.',

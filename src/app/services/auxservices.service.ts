@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 
-
-
+  /*Servicio sinlgleton */
 export class AuxservicesService {
 data:any;
   constructor() { }

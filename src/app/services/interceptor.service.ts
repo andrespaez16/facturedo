@@ -9,6 +9,9 @@ export class InterceptorService  implements HttpInterceptor{
 
   constructor(private services:ServicesService) { }
 
+  /*Interceptor para manejar los headers */
+
+
   intercept(req,next){
    const headerToken= req.clone({
       setHeaders:{

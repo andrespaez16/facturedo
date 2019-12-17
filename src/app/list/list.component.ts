@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services/services.service'
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
 import { AuxservicesService } from '../services/auxservices.service';
-
-
-
-
-
 
 @Component({
   selector: 'app-list',
@@ -16,12 +10,8 @@ import { AuxservicesService } from '../services/auxservices.service';
 })
 export class ListComponent implements OnInit {
 
-
   remates: any = [];
   cifras: number;
-
-
-
   constructor(
     private services: ServicesService,
     private router: Router,
@@ -30,31 +20,26 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.lista();
+    this.list();
   }
 
+  /*Funcion de listar los remates*/
 
-
-  lista() {
+  list() {
     this.services.listOfEnvoices().subscribe((data: any) => {
       this.remates = data.results
-      console.log(data, "esta es la data");
-    })
+    });
   }
-
+  /*Funcion de capturar el serial de la operacion y se la envia al show */
+  
   check(operation: any) {
-    console.log(operation)
     let results = operation.operation
-    console.log(results, "hello")
     this.show(results)
-
-
-
   }
+  /*Funcion de show */
 
   show(operator: any) {
     this.services.showoperation(operator).subscribe((data: any) => {
-      console.log(data, "esto es el show")
       this.auxservice.data = data;
       this.router.navigate(['/show']);
     }, (e) => {

@@ -8,7 +8,7 @@ import { StorageManager } from "../utils/storage.utils";
 })
 export class ServicesService {
 
-
+  /*OBjeto contenesor de los endpoints */
   private endpoint: any = {
     auth: 'https://fact2-dev.herokuapp.com/v1/auth',
     list: 'https://fact2-dev.herokuapp.com/v1/factoring/auctions',
@@ -17,26 +17,19 @@ export class ServicesService {
   private headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http: HttpClient, private router: Router, ) { }
 
-  /**
-    *  Servicios de la aplicacion   */
-
+  /*Servicios de la aplicacion */
 
   auth(data: any) {
     return this.http.post<any>(this.endpoint.auth, data);
   }
 
-
   listOfEnvoices() {
     return this.http.get(this.endpoint.list)
   }
-
-
   getToken() {
     let keyToken = JSON.parse(localStorage.getItem('user_session'))
     return keyToken.token
-
   }
-
   showoperation(operation: any) {
     return this.http.get(this.endpoint.show + "/" + operation)
   }

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() { }
-
+  /*Funcion de auth*/
 
   login() {
 
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
+  /*funcion de guardar el token en local */
   private saveToken(data: any): void {
     let storage = new StorageManager();
     storage.save('user_session', JSON.stringify({
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
     }));
   }
 
-
+  /*loader*/
 
   async presentLoading() {
     const loading = await this.loadingController.create({
