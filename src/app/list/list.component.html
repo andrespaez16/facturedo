@@ -1,3 +1,14 @@
-<p>
-  list works!
-</p>
+<ion-content fullscreen>
+  <ion-card *ngFor="let item of remates">
+    <ion-card-header>
+      <ion-card-title>Cliente Secreto</ion-card-title>
+      <ion-progress-bar value="item.percentage_completed"></ion-progress-bar>
+      <ion-card-subtitle><strong>Fondeada al:</strong> {{item.percentage_completed*100}}%</ion-card-subtitle>
+      <ion-card-subtitle>Finalizacion del remate:</ion-card-subtitle>
+      <ion-card-subtitle>{{item.end_date}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="check(item)">Conocer el cliente</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

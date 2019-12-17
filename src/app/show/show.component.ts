@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {  ServicesService} from "../services/services.service";
 @Component({
   selector: 'app-show',
   templateUrl: './show.component.html',
@@ -7,8 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service :ServicesService) { }
 
   ngOnInit() {}
+
+
+  show(){
+
+this.service.showoperation().subscribe((data:any)=>{
+  
+})
+
+
+
+  }
 
 }

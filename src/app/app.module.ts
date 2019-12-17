@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import {  InterceptorService} from './services/interceptor.service';
 
 
-
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule ,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import {LoginComponent} from '../app/login/login.component'
 import {ListComponent} from '../app/list/list.component'
@@ -28,6 +28,12 @@ import { ShowComponent } from './show/show.component';
     StatusBar,
     SplashScreen,
     ServicesService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:InterceptorService,
+      multi:true
+    },
+    
     
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy ,}
   ],
