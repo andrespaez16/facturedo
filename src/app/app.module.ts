@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import {  InterceptorService} from './services/interceptor.service';
+import { AuxservicesService } from "./services/auxservices.service";
 
 
 import { HttpClientModule ,HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -28,6 +29,7 @@ import { ShowComponent } from './show/show.component';
     StatusBar,
     SplashScreen,
     ServicesService,
+    AuxservicesService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:InterceptorService,

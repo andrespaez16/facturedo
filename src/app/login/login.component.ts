@@ -3,7 +3,7 @@ import { ServicesService } from '../services/services.service'
 import { StorageManager } from "../utils/storage.utils";
 import { Router } from '@angular/router';
 import {Login} from '../models/login.model'
-
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private services: ServicesService,
     private router: Router,
+    public loadingController: LoadingController
   
   ) { }
 
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
       }
   
       this.services.auth(data).subscribe((resp: any) => {
+        this.presentLoading(); 
         console.log(resp)
         this.router.navigate(['/list']);
         this.saveToken(resp);
@@ -57,5 +59,18 @@ export class LoginComponent implements OnInit {
     }));
   }
 
+
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Ingresando',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+  }
 
 }

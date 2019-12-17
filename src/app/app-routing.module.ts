@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'list', component: ListComponent },
-  { path: 'show:operation', component: ShowComponent },
+  { path: 'show', component: ShowComponent },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
 ];
 

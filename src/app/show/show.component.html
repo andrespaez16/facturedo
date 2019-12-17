@@ -1,3 +1,17 @@
-<p>
-  show works!
-</p>
+<ion-content class="contenedor" fullscreen>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Remate:</ion-card-title>
+
+      <ion-card-subtitle>Nombre de la empresa :{{auxservices.data.author_entity_name}}</ion-card-subtitle>
+      <ion-card-subtitle>Monto de la operación:${{auxservices.data.amount}}</ion-card-subtitle>
+      <ion-card-subtitle>Tipo de prioridad:{{auxservices.data.cost_time_priority== 1 ? 'Instabuy':'Remate'}}
+      </ion-card-subtitle>
+      <ion-card-subtitle>Fecha de pago de la operación:{{auxservices.data.payment_date}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="buy(item)">Comprar</ion-button>
+      <ion-button expand="block"  color="danger" (click)="back(item)">Declinar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services/services.service'
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { AuxservicesService } from '../services/auxservices.service';
+
+
+
 
 
 
@@ -21,6 +25,7 @@ export class ListComponent implements OnInit {
   constructor(
     private services: ServicesService,
     private router: Router,
+    public auxservice: AuxservicesService
 
   ) { }
 
@@ -39,16 +44,27 @@ export class ListComponent implements OnInit {
 
   check(operation: any) {
     console.log(operation)
-   let results= operation.operation
-   console.log(results,"hello")
-   this.show(results)
+    let results = operation.operation
+    console.log(results, "hello")
+    this.show(results)
+
+
+
   }
 
-  show(data:any) {
-    this.services.showoperation(data).subscribe((data: any) => {
-      console.log(data,"esto es el show")
+  show(operator: any) {
+    this.services.showoperation(operator).subscribe((data: any) => {
+      console.log(data, "esto es el show")
+      this.auxservice.data = data;
+      this.router.navigate(['/show']);
+    }, (e) => {
+      this.router.navigate(['/list']);
     })
   }
+
+
+
+
 
 
 }
